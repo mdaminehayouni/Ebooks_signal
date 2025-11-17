@@ -1,0 +1,28 @@
+<h1>Liste des Ebooks</h1>
+&nbsp; <button class="btn btn-primary" [routerLink]="['/ebooks', 'add']">Ajouter Livre</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Auteur</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(ebook of ebooks();track ebook.id){
+    <tr>
+      <td>{{ ebook.id }}</td>
+      <td>{{ ebook.title }}</td>
+      <td>{{ ebook.author }}</td>
+      <td>{{ ebook.price }}</td>
+      <td>
+        <button class="btn btn-success" [routerLink]="['/ebooks', 'edit', ebook.id]">Editer</button>
+        &nbsp;
+        <button class="btn btn-danger" (click)="delete(ebook.id)">Supprimer</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
